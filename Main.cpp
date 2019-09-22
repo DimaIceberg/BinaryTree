@@ -5,34 +5,27 @@ using namespace std;
 
 int main() {
 
-	Node tree(5);
+	BinaryTree tree(5);
 
-	tree.insert(3);
-	tree.insert(4);
-	tree.insert(12);
-	tree.insert(1);
-	tree.insert(9);
-	tree.insert(15);
+	tree.insert(&tree, 3);
+	tree.insert(&tree, 4);
+	tree.insert(&tree, 12);
+	tree.insert(&tree, 1);
+	tree.insert(&tree, 9);
+	tree.insert(&tree, 15);
 
-	cout << "InorderTreeWalk... ";
+
+	cout << "InorderTreeWalk... " << endl;
 	tree.inorderWalk();
-	cout << "\n";
+	cout << "\n\n";
 
-	cout << "PreorderTreeWalk... ";
-	tree.preorderWalk();
-	cout << "\n";
-
-	cout << "PostorderTreeWalk... ";
-	tree.postorderWalk();
-	cout << "\n";
-	cout << "\n";
 
 	cout << "Try find 2... " << tree.find(2) << endl; 
 	cout << "Try find 12... " << tree.find(12) << endl;
 	cout << "\n";
 
-	cout << "Min... " << tree.min() << endl; 
-	cout << "Max... " << tree.max() << endl;
+	cout << "Min... " << tree.min()->getKey() << endl; 
+	cout << "Max... " << tree.max()->getKey() << endl;
 	cout << "\n";
 
 	return 0;

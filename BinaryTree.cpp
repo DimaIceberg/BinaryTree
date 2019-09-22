@@ -3,79 +3,86 @@
 
 using namespace std;
 
-Node::Node() {
-	key = 0;
-	left = nullptr;
-	right = nullptr;
-}
-
-Node::Node(int k) {
+BinaryTree::BinaryTree(int k) {
 	key = k;
 	left = nullptr;
 	right = nullptr;
+	root = nullptr;
 }
 
-Node::~Node() {
+BinaryTree::BinaryTree(BinaryTree* rootTree, int value) {
+	root = rootTree;
+	key = value;
+	left = nullptr;
+	right = nullptr;
+}
+
+BinaryTree::~BinaryTree() {
 	delete left, right; 
 }
 
-void Node::insert(int k) {
-	if (k <= key) {
+//insert value
+void BinaryTree::insert(BinaryTree* rootTree, int insertValue) {
+	if (insertValue <= key) {
 		if (left == nullptr) {
-			left = new Node(k);
+			left = new BinaryTree(this, insertValue);
 		}
 		else {
-			left->insert(k);
+			left->insert(this, insertValue);
 		}
 	}
 	else {
 		if (right == nullptr) {
-			right = new Node(k);
+			right = new BinaryTree(this, insertValue);
 		}
 		else {
-			right->insert(k);
+			right->insert(this, insertValue);
 		}
 	}
 }
 
-bool Node::find(int k) {
-	if (key == k) {
+//find value
+bool BinaryTree::find(int findValue) {
+	if (key == findValue) {
 		return true;
 	}
-	else if (k < key && left != nullptr) {
-		left->find(k);
+	else if (findValue < key && left != nullptr) {
+		left->find(findValue);
 	}
-	else if (k > key && right != nullptr) {
-		right->find(k);
+	else if (findValue > key && right != nullptr) {
+		right->find(findValue);
 	}
 	else {
 		return false;
 	}
 }
 
-void Node::del(int k) {
-	//?
-}
-
-int Node::min() {
+//min value
+BinaryTree* BinaryTree::min() {
 	if (left == nullptr) {
-		return key;
+		return this;
 	}
 	else {
 		left->min();
 	}
 }
 
-int Node::max() {
+//max value
+BinaryTree* BinaryTree::max() {
 	if (right == nullptr) {
-		return key;
+		return this;
 	}
 	else {
 		right->max();
 	}
 }
 
-void Node::inorderWalk() {
+int BinaryTree::getKey() {
+	return key;
+}
+
+//inorder tree walk
+void BinaryTree::inorderWalk() {
 	if (left != nullptr) {
 		left->inorderWalk();
 	}
@@ -85,7 +92,8 @@ void Node::inorderWalk() {
 	}
 }
 
-void Node::preorderWalk() {
+//preorder tree walk
+void BinaryTree::preorderWalk() {
 	cout << key << " ";
 	if (left != nullptr) {
 		left->preorderWalk();
@@ -95,7 +103,8 @@ void Node::preorderWalk() {
 	}
 }
 
-void Node::postorderWalk() {
+//postorder tree walk
+void BinaryTree::postorderWalk() {
 	if (left != nullptr) {
 		left->postorderWalk();
 	}

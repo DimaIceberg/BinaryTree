@@ -1,21 +1,24 @@
 #pragma once
 
-class Node {
+class BinaryTree {
 private:
-	unsigned int key;
-	Node* left;
-	Node* right;
+	int key;
+	BinaryTree* left;
+	BinaryTree* right;
+	BinaryTree* root;
 
 public: 
-	Node();
-	Node(int k);
-	~Node();
+	BinaryTree(int k);
+	BinaryTree(BinaryTree* rootTree, int value);
+	~BinaryTree();
 
-	void insert(int k);
-	bool find(int k);
-	void del(int k);
-	int min();
-	int max();
+	int getKey();
+	void insert(BinaryTree* rootTree, int insertValue);
+	bool find(int findValue);
+	BinaryTree* min();
+	BinaryTree* max();
+
+	//tree traversal
 	void inorderWalk();
 	void preorderWalk();
 	void postorderWalk();
