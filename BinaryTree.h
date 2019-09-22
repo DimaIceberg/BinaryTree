@@ -13,4 +13,10 @@ public:
 
 	void insert(int k);
 	bool find(int k);
+	void del(int k);
+	int min();
+	int max();
+	void inorderWalk();
+	void preorderWalk();
+	void postorderWalk();
 };
