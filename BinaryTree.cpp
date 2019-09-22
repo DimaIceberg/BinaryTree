@@ -36,5 +36,4 @@ void Node::insert(int k) {
 			right->insert(k);
 		}
 	}
-	cout << k << endl;
 }

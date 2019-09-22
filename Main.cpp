@@ -5,9 +5,9 @@ using namespace std;
 
 int main() {
 
-	Node tree(5000);
+	Node tree(50);
 
-	for (int i = 0; i < 10000; i++) {
+	for (int i = 0; i < 100; i++) {
 		tree.insert(i);
 	}
 
