@@ -1,0 +1,5 @@
+*
+!.gitignore
+!Main.cpp
+!BinaryTree.h
+!BinaryTree.cpp
