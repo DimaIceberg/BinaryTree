@@ -37,3 +37,18 @@ void Node::insert(int k) {
 		}
 	}
 }
+
+bool Node::find(int f) {
+	if (key == f) {
+		return true;
+	}
+	else if (f < key && left != nullptr) {
+		left->find(f);
+	}
+	else if (f > key && right != nullptr) {
+		right->find(f);
+	}
+	else {
+		return false;
+	}
+}
